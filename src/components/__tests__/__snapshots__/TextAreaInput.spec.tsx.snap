@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaInput it renders 1`] = `
+<div>
+  <form
+    class="sc-bdvvtL fGZnOR"
+  >
+    <h1>
+      Insert JSON Here
+    </h1>
+    <label
+      for="json-input-textarea"
+    >
+      paste JSON below, click 'GET SCHEDULE' to view updated opening hours
+    </label>
+    <textarea
+      id="json-input-textarea"
+      name="text-area"
+      rows="20"
+    >
+      dummy_json
+    </textarea>
+    <div
+      class="sc-hKwDye fnnqVZ"
+    >
+      <button
+        class="sc-dkPtRN eQRDKq"
+        type="submit"
+      >
+        <span>
+          Get Schedule
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;

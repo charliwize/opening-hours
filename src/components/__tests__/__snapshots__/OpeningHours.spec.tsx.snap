@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpeningHours it renders 1`] = `
+<div>
+  <div
+    class="sc-hKwDye jXKAnN"
+  >
+    <div
+      class="sc-eCImPb cvQtDW"
+    >
+      <img
+        alt="clock"
+        src="/assets/clock-svgrepo-com.svg"
+      />
+      <h2>
+        Opening Hours
+      </h2>
+    </div>
+    <div
+      class="sc-bdvvtL iILrCD"
+      data-testid="opening-hour"
+    >
+      <div>
+        <strong
+          class="day-name"
+        >
+          Saturday
+        </strong>
+      </div>
+      <div
+        class="sc-dkPtRN loGgqZ"
+      >
+        <div
+          class=""
+        >
+          9 AM - 11 AM
+        </div>
+        <div
+          class=""
+        >
+          4 PM - 11 PM
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bdvvtL iILrCD"
+      data-testid="opening-hour"
+    >
+      <div>
+        <strong
+          class="day-name"
+        >
+          saturday
+        </strong>
+      </div>
+      <div
+        class="sc-dkPtRN loGgqZ"
+      >
+        <div
+          class=""
+        >
+          9 AM - 11 AM
+        </div>
+        <div
+          class=""
+        >
+          4 PM - 11 PM
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
