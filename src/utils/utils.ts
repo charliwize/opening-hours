@@ -4,7 +4,7 @@ import { DayItem, Schedule } from '../types';
 const validDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 export const getHours = (unixTimeStamp?: number) => {
-    if (!unixTimeStamp) {
+    if (unixTimeStamp === undefined || isNaN(unixTimeStamp)) {
         throw new Error('data contains missing timestamps');
     }
     const format = unixTimeStamp >= 12 * 3600 ? 'PM' : 'AM';
@@ -16,10 +16,6 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
     const values: string[] = [];
     const lastItem = currentDay[currentDay.length - 1];
     const nextDayClosed = nextDay?.find((day) => day.type === Status.close);
-
-    if (lastItem.type === Status.open && nextDayClosed) {
-        values.push(`${getHours(lastItem.value)} - ${getHours(nextDayClosed.value)}`);
-    }
 
     currentDay.forEach((item, index) => {
         const currentItem = item;
@@ -38,6 +34,10 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
         }
     });
 
+    if (lastItem.type === Status.open && nextDayClosed) {
+        values.push(`${getHours(lastItem.value)} - ${getHours(nextDayClosed.value)}`);
+    }
+    
     if (lastItem.type === Status.open && !nextDayClosed) {
         values.push(`opens from ${getHours(lastItem.value)}`);
     }
@@ -56,6 +56,10 @@ export const getPeriod = (response: Schedule, day: string, index: number) => {
     handleErrors(day, currentDay);
 
     const days = Object.keys(response);
+    if (days.length < validDays.length) {
+        throw new Error('some days of the week are missing in input');    
+    }
+
     const nextDay = response[days[(index + 1) % 7]];
     const noTimes = !Boolean(currentDay.length);
     const onlyClosedTimes = currentDay.every((day) => day.type === Status.close);

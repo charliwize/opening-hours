@@ -35,17 +35,24 @@ const Schedule = styled.div`
     }
 `;
 
+const WeekName = styled.div`
+    display: flex;
+    @media (max-width: 320px) {
+        flex-direction: column;
+    }
+`;
+
 const OpeningHour = ({ item }: Props) => {
     const today = new Date().getDay();
-    const isCurrentDay = getDayByNumber(today) === item.day;
+    const isCurrentDay = getDayByNumber(today) === item.day.toLocaleLowerCase();
     const { schedule, day } = item;
 
     return (
         <StyledRow data-testid="opening-hour">
-            <div>
+            <WeekName>
                 <strong className="day-name">{day}</strong>
                 {isCurrentDay && <Today>TODAY</Today>}
-            </div>
+            </WeekName>
             <Schedule>
                 {schedule.map((scheduleItem, index: number) => (
                     <div className={scheduleItem === 'Closed' ? 'closed-text' : ''} key={index}>
