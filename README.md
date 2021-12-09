@@ -17,3 +17,5 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
+
+node version in use: v16.2.0
