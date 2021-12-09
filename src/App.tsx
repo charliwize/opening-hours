@@ -4,15 +4,6 @@ import OpeningHours from './components/OpeningHours';
 import TextAreaInput from './components/TextAreaInput';
 import { getPeriod } from './utils/utils';
 
-export interface Schedule {
-    [name: string]: DayItem[];
-}
-
-export interface DayItem {
-    type: 'open' | 'close';
-    value: number;
-}
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -38,24 +29,23 @@ function App() {
     const [jsonInput, setJsonInput] = useState<string>('');
     const [error, setError] = useState<string>('');
 
-    const prettifyJson = () => {
-        try {
-            const originalVersion = JSON.parse(jsonInput);
-            var prettyVersion = JSON.stringify(originalVersion, undefined, 4);
-            setJsonInput(prettyVersion);
-        } catch (error) {
-            if (error instanceof Error) {
-                setError('Invalid JSON: ' + error.message);
-                return;
-            }
-        }
-    };
-
     useEffect(() => {
+        const prettifyJson = () => {
+            try {
+                const originalVersion = JSON.parse(jsonInput);
+                var prettyVersion = JSON.stringify(originalVersion, undefined, 4);
+                setJsonInput(prettyVersion);
+            } catch (error) {
+                if (error instanceof Error) {
+                    setError('Invalid JSON: ' + error.message);
+                    return;
+                }
+            }
+        };
         if (jsonInput.length > 0) {
             prettifyJson();
         }
-    }, [jsonInput, prettifyJson]);
+    }, [jsonInput]);
 
     const getSchedules = () => {
         if (!jsonInput) {

@@ -1,10 +1,10 @@
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you must first run:
 
 ### `yarn`
 
-install dependencies in package.json in parallel
+installs dependencies based on package.json
 
 ### `yarn start`
 

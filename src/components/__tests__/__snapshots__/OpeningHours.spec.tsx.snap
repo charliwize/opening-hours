@@ -3,7 +3,7 @@
 exports[`OpeningHours it renders 1`] = `
 <div>
   <div
-    class="sc-hKwDye jXKAnN"
+    class="sc-hKwDye fQBrgi"
   >
     <div
       class="sc-eCImPb cvQtDW"
@@ -28,7 +28,7 @@ exports[`OpeningHours it renders 1`] = `
         </strong>
       </div>
       <div
-        class="sc-dkPtRN loGgqZ"
+        class="sc-dkPtRN hcoMhN"
       >
         <div
           class=""
@@ -54,7 +54,7 @@ exports[`OpeningHours it renders 1`] = `
         </strong>
       </div>
       <div
-        class="sc-dkPtRN loGgqZ"
+        class="sc-dkPtRN hcoMhN"
       >
         <div
           class=""

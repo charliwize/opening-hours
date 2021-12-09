@@ -1,9 +1,12 @@
-import { DayItem, Schedule } from '../App';
 import { Status } from '../enum';
+import { DayItem, Schedule } from '../types';
 
 const validDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-export const getHours = (unixTimeStamp: number) => {
+export const getHours = (unixTimeStamp?: number) => {
+    if (!unixTimeStamp) {
+        throw new Error('data contains missing timestamps');
+    }
     const format = unixTimeStamp >= 12 * 3600 ? 'PM' : 'AM';
     const currentHours = Math.round(unixTimeStamp / 3600) % 12;
     return (currentHours === 0 ? 12 : currentHours) + ' ' + format;
@@ -15,7 +18,6 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
     const nextDayClosed = nextDay?.find((day) => day.type === Status.close);
 
     if (lastItem.type === Status.open && nextDayClosed) {
-        console.log(lastItem.value, nextDayClosed.value);
         values.push(`${getHours(lastItem.value)} - ${getHours(nextDayClosed.value)}`);
     }
 
@@ -32,12 +34,14 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
 
         const isOpenCloseMatch = currentItem.type === Status.open && nextItem.type === Status.close;
         if (isOpenCloseMatch) {
-            console.log('current', item);
-            console.log('next', currentDay[index + 1]);
             values.push(`${getHours(currentItem.value)} - ${getHours(nextItem.value)}`);
         }
     });
 
+    if (lastItem.type === Status.open && !nextDayClosed) {
+        values.push(`open from ${getHours(lastItem.value)}`);
+    }
+    
     return values;
 };
 
@@ -48,8 +52,6 @@ export const getDayByNumber = (dayNumber: number) => {
 const isDayValid = (day: string) => validDays.includes(day.toLowerCase());
 
 export const getPeriod = (response: Schedule, day: string, index: number) => {
-    console.log(typeof response);
-
     const currentDay = response[day];
     handleErrors(day, currentDay);
 
