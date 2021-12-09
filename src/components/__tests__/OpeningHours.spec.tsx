@@ -22,12 +22,12 @@ describe('OpeningHours', () => {
         expect(container).toMatchSnapshot();
     });
 
-    test('it renders no opening hours', () => {
+    test('it should render no opening hours', () => {
         render(<OpeningHours scheduleInfo={[]} />);
         expect(screen.getByText('No available opening hours')).toBeTruthy();
     });
 
-    test('it renders opening hours', () => {
+    test('it should render opening hours', () => {
         render(<OpeningHours scheduleInfo={defaultProps.items} />);
         expect(screen.getAllByTestId('opening-hour')).toHaveLength(2);
     });

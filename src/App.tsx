@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import OpeningHours from './components/OpeningHours';
 import TextAreaInput from './components/TextAreaInput';
+import { Schedule } from './types';
 import { getPeriod } from './utils/utils';
 
 const Container = styled.div`
@@ -52,7 +53,7 @@ function App() {
             return;
         }
         try {
-            const data = JSON.parse(jsonInput);
+            const data: Schedule = JSON.parse(jsonInput);
             const scheduleInfo = Object.keys(data).map((day: string, index: number) =>
                 getPeriod(data, day, index)
             );

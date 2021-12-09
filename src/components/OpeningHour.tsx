@@ -10,15 +10,17 @@ const StyledRow = styled.div`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #eeeeee;
-    padding: 10px 0 4px 0;
+    line-height: 2.5rem;
     .day-name {
         text-transform: capitalize;
+        font-weight: 600;
+        font-size: 1rem;
     }
 `;
 
 const Today = styled.span`
     color: #5bcb02;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     margin-left: 0.625rem;
     font-weight: bold;
 `;
@@ -50,7 +52,7 @@ const OpeningHour = ({ item }: Props) => {
     return (
         <StyledRow data-testid="opening-hour">
             <WeekName>
-                <strong className="day-name">{day}</strong>
+                <div className="day-name">{day}</div>
                 {isCurrentDay && <Today>TODAY</Today>}
             </WeekName>
             <Schedule>

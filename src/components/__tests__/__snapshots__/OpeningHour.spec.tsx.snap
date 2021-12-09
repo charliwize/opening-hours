@@ -3,15 +3,17 @@
 exports[`OpeningHour it renders 1`] = `
 <div>
   <div
-    class="sc-bdvvtL iILrCD"
+    class="sc-bdvvtL kMUTHk"
     data-testid="opening-hour"
   >
-    <div>
-      <strong
+    <div
+      class="sc-hKwDye igQdvm"
+    >
+      <div
         class="day-name"
       >
         Saturday
-      </strong>
+      </div>
     </div>
     <div
       class="sc-dkPtRN hcoMhN"

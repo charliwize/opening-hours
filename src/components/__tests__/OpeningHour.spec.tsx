@@ -15,13 +15,13 @@ describe('OpeningHour', () => {
         expect(container).toMatchSnapshot();
     });
 
-    test('it opening and closing times', () => {
+    test('it should show opening and closing times', () => {
         render(<OpeningHour item={defaultProps.item} />);
         expect(screen.getByText('9 AM - 11 AM')).toBeTruthy();
         expect(screen.getByText('4 PM - 11 PM')).toBeTruthy();
     });
 
-    test('it renders closed text', () => {
+    test('it should renders closed text', () => {
         const props = {
             item: {
                 day: 'Friday',

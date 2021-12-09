@@ -58,11 +58,11 @@ const StyledButton = styled.button`
         width: 100%;
     }
     :hover {
-        color: #A1A2A4;
+        color: #a1a2a4;
     }
     :disabled {
-        background: #EEEEEE;
-        color: #A1A2A4;
+        background: #eeeeee;
+        color: #a1a2a4;
     }
 `;
 

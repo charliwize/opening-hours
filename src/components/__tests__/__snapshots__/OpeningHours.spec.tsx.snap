@@ -3,10 +3,10 @@
 exports[`OpeningHours it renders 1`] = `
 <div>
   <div
-    class="sc-hKwDye fQBrgi"
+    class="sc-eCImPb iThOPy"
   >
     <div
-      class="sc-eCImPb cvQtDW"
+      class="sc-jRQBWg hlqcTl"
     >
       <img
         alt="clock"
@@ -17,15 +17,17 @@ exports[`OpeningHours it renders 1`] = `
       </h2>
     </div>
     <div
-      class="sc-bdvvtL iILrCD"
+      class="sc-bdvvtL kMUTHk"
       data-testid="opening-hour"
     >
-      <div>
-        <strong
+      <div
+        class="sc-hKwDye igQdvm"
+      >
+        <div
           class="day-name"
         >
           Saturday
-        </strong>
+        </div>
       </div>
       <div
         class="sc-dkPtRN hcoMhN"
@@ -43,15 +45,17 @@ exports[`OpeningHours it renders 1`] = `
       </div>
     </div>
     <div
-      class="sc-bdvvtL iILrCD"
+      class="sc-bdvvtL kMUTHk"
       data-testid="opening-hour"
     >
-      <div>
-        <strong
+      <div
+        class="sc-hKwDye igQdvm"
+      >
+        <div
           class="day-name"
         >
           saturday
-        </strong>
+        </div>
       </div>
       <div
         class="sc-dkPtRN hcoMhN"

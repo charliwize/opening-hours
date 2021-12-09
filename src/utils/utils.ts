@@ -4,8 +4,8 @@ import { DayItem, Schedule } from '../types';
 const validDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 export const getHours = (unixTimeStamp?: number) => {
-    if (unixTimeStamp === undefined || isNaN(unixTimeStamp)) {
-        throw new Error('data contains missing timestamps');
+    if (unixTimeStamp === undefined || isNaN(unixTimeStamp) || unixTimeStamp.toString() === '') {
+        throw new Error('data contains invalid timestamps');
     }
     const format = unixTimeStamp >= 12 * 3600 ? 'PM' : 'AM';
     const currentHours = Math.round(unixTimeStamp / 3600) % 12;
@@ -15,7 +15,8 @@ export const getHours = (unixTimeStamp?: number) => {
 const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string) => {
     const values: string[] = [];
     const lastItem = currentDay[currentDay.length - 1];
-    const nextDayClosed = nextDay?.find((day) => day.type === Status.close);
+    const nextDayType = nextDay.length > 0 ? nextDay[0].type : undefined;
+    const nextDayClosed = nextDayType === Status.close ? nextDay[0] : undefined;
 
     currentDay.forEach((item, index) => {
         const currentItem = item;
@@ -34,14 +35,12 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
         }
     });
 
-    if (lastItem.type === Status.open && nextDayClosed) {
-        values.push(`${getHours(lastItem.value)} - ${getHours(nextDayClosed.value)}`);
+    if (lastItem.type === Status.open) {
+        nextDayClosed
+            ? values.push(`${getHours(lastItem.value)} - ${getHours(nextDayClosed.value)}`)
+            : values.push(`opens from ${getHours(lastItem.value)}`);
     }
-    
-    if (lastItem.type === Status.open && !nextDayClosed) {
-        values.push(`opens from ${getHours(lastItem.value)}`);
-    }
-    
+
     return values;
 };
 
@@ -57,7 +56,7 @@ export const getPeriod = (response: Schedule, day: string, index: number) => {
 
     const days = Object.keys(response);
     if (days.length < validDays.length) {
-        throw new Error('some days of the week are missing in input');    
+        throw new Error('some days of the week are missing in input');
     }
 
     const nextDay = response[days[(index + 1) % 7]];

@@ -2,6 +2,11 @@ import { Schedule } from '../../types';
 import { getDayByNumber, getHours, getPeriod } from '../utils';
 
 const defaultResponse: Schedule = {
+    sunday: [],
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
     friday: [
         {
             type: 'open',
@@ -33,8 +38,8 @@ const defaultResponse: Schedule = {
 };
 
 describe('utils', () => {
-    test('it is not closed on same day', () => {
-        expect(getPeriod(defaultResponse, 'friday', 0)).toEqual({
+    test('it should be closed on the next day', () => {
+        expect(getPeriod(defaultResponse, 'friday', 5)).toEqual({
             day: 'friday',
             schedule: ['6 PM - 1 AM'],
         });
@@ -42,9 +47,11 @@ describe('utils', () => {
 
     test('it should return hours as closed', () => {
         const noItems = {
+            ...defaultResponse,
             friday: [],
         };
         const allClose: Schedule = {
+            ...defaultResponse,
             friday: [
                 {
                     type: 'close',
@@ -58,6 +65,7 @@ describe('utils', () => {
 
     test('it should show open and closed on same day', () => {
         const openClose: Schedule = {
+            ...defaultResponse,
             saturday: [
                 {
                     type: 'open',
@@ -107,9 +115,9 @@ describe('utils', () => {
 
     test('it should return valid time stamp', () => {
         expect(getHours(64800)).toBe('6 PM');
-    })
+    });
 
     test('it should throw error on invalid time stamp', () => {
-        expect(() => getHours(undefined)).toThrowError('data contains missing timestamps');
-    })
+        expect(() => getHours(undefined)).toThrowError('data contains invalid timestamps');
+    });
 });
