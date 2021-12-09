@@ -39,7 +39,7 @@ const getOpenCloseHour = (currentDay: DayItem[], nextDay: DayItem[], day: string
     });
 
     if (lastItem.type === Status.open && !nextDayClosed) {
-        values.push(`open from ${getHours(lastItem.value)}`);
+        values.push(`opens from ${getHours(lastItem.value)}`);
     }
     
     return values;

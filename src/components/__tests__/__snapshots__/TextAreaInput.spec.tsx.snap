@@ -11,7 +11,7 @@ exports[`TextAreaInput it renders 1`] = `
     <label
       for="json-input-textarea"
     >
-      paste JSON below, click 'GET SCHEDULE' to view updated opening hours
+      Paste JSON below, click 'GET SCHEDULE' to view updated opening hours
     </label>
     <textarea
       id="json-input-textarea"

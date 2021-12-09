@@ -20,7 +20,7 @@ describe('TextAreaInput', () => {
         );
         expect(
             screen.getByLabelText(
-                /paste JSON below, click 'GET SCHEDULE' to view updated opening hours/
+                /Paste JSON below, click 'GET SCHEDULE' to view updated opening hours/
             )
         ).toBeTruthy();
         expect(container).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('TextAreaInput', () => {
             />
         );
         const input = screen.getByLabelText(
-            /paste JSON below, click 'GET SCHEDULE' to view updated opening hours/
+            /Paste JSON below, click 'GET SCHEDULE' to view updated opening hours/
         );
         expect(screen.queryAllByRole('button')[0]).toBeDisabled();
         fireEvent.change(input, { target: { value: 123 } });

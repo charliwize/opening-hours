@@ -76,7 +76,7 @@ const TextAreaInput = ({ value, error, handleEnterData, getSchedules }: Props) =
         <StyledForm onSubmit={(e) => e.preventDefault()}>
             <h1>Insert JSON Here</h1>
             <label htmlFor="json-input-textarea">
-                paste JSON below, click 'GET SCHEDULE' to view updated opening hours
+                Paste JSON below, click 'GET SCHEDULE' to view updated opening hours
             </label>
             <textarea
                 name="text-area"
